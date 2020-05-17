@@ -1,0 +1,4 @@
+ASB:
+This aim of this application is to solve an existing sudoku puzzle.
+Various options are given providing different ways to solve the puzze, 
+the pattern can be observed visually 

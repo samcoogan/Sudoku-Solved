@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Game Container -->
+<div class="game-container">
+  <div class="heading">
+    <h1 class="title">Sudoku Solved!</h1>
+  </div> 
+  <!-- Game Grid -->
+  <div class="grid-container">
+    <form action="/index.html" method="POST" name="sudoku-input">
+    {% for i in range(9) %}
+      <div class="grid-row">
+        {% for j in range(9) %}
+          <div class="grid-cell">
+          <input type="text" maxlength="1" name='[{{ i*9 + j%9 }}]' class="def-txt-input">
+          </div>
+        {% endfor %}
+        </div>
+      {% endfor %}
+   </div>
+   <!-- End Game Grid -->
+   <!-- Radio buttons -->
+  <div class="radio-buts">
+    <h3 data-toggle="tooltip" data-placement="auto" title="Check all unfilled squares for obvious solutions">Simple Search</h3>
+    
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="BestFS" value="bestfs" name="simplesearch">
+      <label class="custom-control-label" for="BestFS" data-toggle="tooltip" data-placement="auto" title="Searches the square with the least possible solutions first">Best First Search</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="Hor" value="horizontalfs" name="simplesearch">
+      <label class="custom-control-label" for="Hor" data-toggle="tooltip" data-placement="auto" title="Searches through the puzzle horizontally from left to right">Left To Right</label>
+    </div>
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="Vert" value="verticalfs" name="simplesearch">
+      <label class="custom-control-label" for="Vert" data-toggle="tooltip" data-placement="auto" title="Searches the puzzle vertically">Top To Bottom</label>
+    </div>
+    <button type="button" id="search-btn" class="btn btn-primary btn-sm btn-block" value="POST">Check Squares Once</button>
+    <button type="button" id="loop-btn" class="btn btn-primary btn-sm btn-block" value="POST">Loop Through Puzzle</button>
+    <h3 data-toggle="tooltip" data-placement="auto" title="A search tree is a node-based data structure where each node represents a puzzle state. The search tree generates a series sub-trees as it attempts to find the solutions for each square">Algorithmic Search Tree</h3>
+    
+    
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="AStar" value="astar" name="algosearch">
+      <label class="custom-control-label" for="AStar" data-toggle="tooltip" data-placement="auto" title="A* is an informed search algorithm, or a best-first search. Starting from a specific starting node of a tree, it aims to find the shortest path to the solution">A* Algorithm</label>
+    </div>
+
+    <div class="custom-control custom-radio">
+      <input type="radio" class="custom-control-input" id="DFS" value="depthfs" name="algosearch">
+      <label class="custom-control-label" for="DFS" data-toggle="tooltip" data-placement="auto" title="Depth-first search is an algorithm for traversing or searching tree structure. The algorithm starts at the root node and explores as far as possible along until it hits at dead end where by it backtracks">Depth First Search</label>
+    </div>
+    <button type="button" id="algo-btn" class="btn btn-primary btn-sm btn-block">Find Solution</button>
+    <hr>
+    <div class="extra-buttons">
+    <button type="button" id="onesquare-btn" class="btn btn-primary">Reveal One Square</button>
+    <button type="button" id="stop-btn" class="btn btn-danger" disabled>Stop Scan</button>
+  </div>
+    <!--
+    <button type="button" id="load-btn" class="btn btn-secondary btn-block" value="POST">Load a puzzle</button>
+    -->
+  
+  <div class="btn-group"  aria-label="Basic example">
+    <h4>Load Puzzle</h4>
+  <button type="button" id="easy-btn" class="btn btn-secondary">Easy</button>
+  <button type="button" id="med-btn" class="btn btn-secondary">Medium</button>
+  <button type="button" id="hard-btn" class="btn btn-secondary">Hard</button>
+  </div>
+
+  
+  
+
+ 
+
+
+  </div>
+
+  <!-- End of radio buttons -->
+
+  <!-- Text Area and clear button -->
+  <div class="button-container">
+    <button id="clear-btn" type="button" class="btn btn-secondary btn-block">Clear</button>
+    <textarea readonly class="form-control" name='content' id='content' rows="3"></textarea>
+  </div>
+  <!-- End Text Area -->
+
+</div>
+<!-- End Game Container -->
+{% endblock %}
