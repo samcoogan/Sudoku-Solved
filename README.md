@@ -1,4 +1,4 @@
-# sudoku-solved
+# Sudoku Solved
 
 Sudoku Solved is a web application created using Flask and written with Python and Javascript.
 
